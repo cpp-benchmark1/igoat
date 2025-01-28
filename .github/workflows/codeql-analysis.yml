@@ -38,7 +38,13 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        sudo apt-get install gnustep gnustep-devel gobjc
+        sudo apt-get install gnustep gnustep-devel gobjc libcairo-dev libsdl2-dev liblcms2-dev
+
+        git clone https://github.com/PureSwift/Cacao.git
+        cd Cacao
+        swift build
+        cd ..
+        
         cd iGoat/iGoat
         . /usr/share/GNUstep/Makefiles/GNUstep.sh
         gcc `gnustep-config --objc-flags` -lgnustep-base -lobjc main.m -o igoat
