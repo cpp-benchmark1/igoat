@@ -38,11 +38,10 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        sudo apt-get install gnustep gnustep-devel gobjc libcairo-dev libsdl2-dev liblcms2-dev gcc-obj
-        
+        sudo apt-get install gnustep gnustep-devel gobjc libcairo-dev libsdl2-dev liblcms2-dev
         cd iGoat/iGoat
         . /usr/share/GNUstep/Makefiles/GNUstep.sh
-        gcc `gnustep-config --objc-flags` -lgnustep-base -lobjc main.m -o igoat
+        gcc `gnustep-config --objc-flags` -lgnustep-base -lobjc AppDelegate.m iGoatAppDelegate.m -o igoat
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
       with:
