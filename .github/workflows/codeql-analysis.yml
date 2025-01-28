@@ -38,7 +38,13 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        sudo apt-get install gnustep gnustep-devel gobjc
+        sudo apt-get install gnustep gnustep-devel gobjc clang cmake libxml2-dev libssl-dev libcurl4-openssl-dev libzip-dev
+        git clone https://github.com/tpoechtrager/osxcross.git
+        cd osxcross
+        ./tools/get_dependencies.sh
+        ./build.sh
+        cd ..
+        
         cd iGoat/iGoat
         . /usr/share/GNUstep/Makefiles/GNUstep.sh
         gcc `gnustep-config --objc-flags` -lgnustep-base main.m -o igoat
