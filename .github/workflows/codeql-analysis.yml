@@ -38,8 +38,8 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        sudo apt-get install gnustep gnustep-devel gobjc libcairo-dev libsdl2-dev liblcms2-dev pnpm
-        pnpm add uikit@dev
+        sudo apt-get install gnustep gnustep-devel gobjc libcairo-dev libsdl2-dev liblcms2-dev yarn
+        yarn add uikit@dev
         
         cd iGoat/iGoat
         . /usr/share/GNUstep/Makefiles/GNUstep.sh
