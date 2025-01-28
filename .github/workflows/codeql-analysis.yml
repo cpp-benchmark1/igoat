@@ -13,7 +13,7 @@ on:
 jobs:
   analyze:
     name: Analyze (${{ matrix.language }})
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     permissions:
       security-events: write
       packages: read
@@ -38,11 +38,10 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
-        sudo xcodebuild -runFirstLaunch
-        sudo gem install cocoapods
-        cd iGoat/iGoat.xcodeproj
-        xcodebuild -workspace project.xcworkspace -scheme iGoat -allowProvisioningUpdates clean build
+        sudo apt-get install gnustep gnustep-devel gobjc
+        cd iGoat/iGoat
+        . /usr/share/GNUstep/Makefiles/GNUstep.sh
+        gcc `gnustep-config --objc-flags` -lgnustep-base -lobjc main.m -o igoat
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
       with:
