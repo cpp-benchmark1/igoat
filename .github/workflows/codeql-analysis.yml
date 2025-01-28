@@ -38,12 +38,8 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        sudo apt-get install gnustep gnustep-devel gobjc libcairo-dev libsdl2-dev liblcms2-dev
-
-        git clone https://github.com/PureSwift/Cacao.git
-        cd Cacao
-        swift build
-        cd ..
+        sudo apt-get install gnustep gnustep-devel gobjc libcairo-dev libsdl2-dev liblcms2-dev pnpm
+        pnpm add uikit@dev
         
         cd iGoat/iGoat
         . /usr/share/GNUstep/Makefiles/GNUstep.sh
