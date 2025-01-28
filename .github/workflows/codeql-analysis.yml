@@ -41,7 +41,6 @@ jobs:
         sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
         sudo xcodebuild -runFirstLaunch
         sudo gem install cocoapods
-        pod install
         cd iGoat/iGoat.xcodeproj
         xcodebuild -workspace iGoat.xcworkspace -scheme iGoat -sdk iphoneos -configuration Release clean build
     - name: Perform CodeQL Analysis
