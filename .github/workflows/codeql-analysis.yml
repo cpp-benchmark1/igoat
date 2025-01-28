@@ -41,7 +41,7 @@ jobs:
         sudo apt-get install gnustep gnustep-devel gobjc clang cmake libxml2-dev libssl-dev libcurl4-openssl-dev libzip-dev
         git clone https://github.com/tpoechtrager/osxcross.git
         cd osxcross
-        ./tools/get_dependencies.sh
+        sudo ./tools/get_dependencies.sh
         ./build.sh
         cd ..
         
