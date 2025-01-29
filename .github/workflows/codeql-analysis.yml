@@ -38,6 +38,9 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
+        wget https://github.com/darlinghq/darling/releases/download/v0.1.20230310_update_sources_11_5/darling_0.1.20230310.jammy_amd64.deb
+        sudo apt install ./darling_0.1.20230310.jammy_amd64.deb
+        
         sudo apt-get install gnustep gnustep-devel gobjc libcairo-dev libsdl2-dev liblcms2-dev
         cd iGoat/iGoat
         . /usr/share/GNUstep/Makefiles/GNUstep.sh
